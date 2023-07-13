@@ -99,6 +99,8 @@ export default baseMixins.extend({
     tabindex: { type: [String, Number], default: '0' },
     // Right to Left
     rtl: { type: Boolean, default: false },
+    // Date that will be used internally when value is not set
+    placeholderDate: { type: [String, Object, Number, Date] },
 
     // --> Menu Props
     // Allow to set origin
@@ -154,6 +156,7 @@ export default baseMixins.extend({
           range: this.range,
           locale: this.currentLocale,
           type: this.type,
+          placeholderDate: this.placeholderDate,
         });
       },
       set (date) {

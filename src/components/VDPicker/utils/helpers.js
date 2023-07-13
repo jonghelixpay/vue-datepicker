@@ -50,7 +50,7 @@ export {
 // -------------------------------
 // Initialize dates for components
 // -------------------------------
-function initDate (date, { range, locale, type }) {
+function initDate (date, { range, locale, type, placeholderDate }) {
   if (range) {
     return {
       start: date && date.start != null ? generateDate({ date: date.start, locale }) : undefined,
@@ -58,7 +58,15 @@ function initDate (date, { range, locale, type }) {
     };
   }
 
-  return date != null ? generateDate({ date, locale, type }) : undefined;
+  if (date != null) {
+    return generateDate({ date, locale, type });
+  }
+
+  if (placeholderDate) {
+    return generateDate({ date: placeholderDate, locale, type });
+  }
+
+  return undefined;
 }
 
 function generateDates ({
